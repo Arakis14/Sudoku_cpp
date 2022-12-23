@@ -7,7 +7,7 @@
 
 namespace fs = std::filesystem;
 
-std::vector<int> readFile(fs::path &input) {
+std::vector<int> readFile(const fs::path &input) {
   std::vector<int> v = {};
   if(!fs::exists(input))
     throw std::runtime_error("File does not exist.");
@@ -20,6 +20,6 @@ std::vector<int> readFile(fs::path &input) {
   return v;
 }
 
-bool checkSudokuSize(std::vector<int>& vec) {
+bool checkSudokuSize(const std::vector<int>& vec) {
   return (vec.size() == 81);
 }

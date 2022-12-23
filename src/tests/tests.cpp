@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "../CFileReader.cpp"
+#include "../CSudoku.cpp"
 
 std::vector<int> sudoku_correct_size = {
 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -25,24 +26,30 @@ std::vector<int> sudoku_incorrect_size = {
 0, 0, 0, 0, 0, 0, 0, 0
 };
 
-TEST(SudokuTest, CanReadFromFile) {
+TEST(CFileReaderTest, CanReadFromFile) {
   std::filesystem::path path = "/home/wiktor/Documents/workspace/Sudoku_cpp/src/tests/example.txt";
   auto res = readFile(path);
   std::vector<int> v {1, 0, 1};
   EXPECT_EQ(res, v);
 }
 
-TEST(SudokuTest, CanReadFromFileFail) {
+TEST(CFileReaderTest, CanReadFromFileFail) {
   std::filesystem::path path = "/home/wiktor/Documents/workspace/Sudoku_cpp/src/tests/example1.txt";
   EXPECT_THROW(readFile(path);, std::runtime_error);
 }
 
-TEST(SudokuTest, IsSizeCorrect) {
+TEST(CFileReaderTest, IsSizeCorrect) {
   auto res = checkSudokuSize(sudoku_correct_size);
   EXPECT_TRUE(res);
 }
 
-TEST(SudokuTest, IsSizeIncorrect) {
+TEST(CFileReaderTest, IsSizeIncorrect) {
   auto res = checkSudokuSize(sudoku_incorrect_size);
   EXPECT_FALSE(res);
+}
+
+TEST(SudokuTest, checkRow) {
+  int a = 21;
+  auto res = checkRow(a);
+  EXPECT_EQ(res, 2);
 }
