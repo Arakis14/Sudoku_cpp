@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
 project(Sudoku_cpp)
 add_executable(${PROJECT_NAME} src/main.cpp)
+target_compile_options(${PROJECT_NAME} PUBLIC -Wall -Werror -Wpedantic -Wextra -std=c++17)
 
 set(CMAKE_CXX_STANDARD 20)
 
