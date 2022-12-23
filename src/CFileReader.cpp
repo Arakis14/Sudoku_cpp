@@ -1,13 +1,13 @@
-#include <stdexcept>
+#include <algorithm>
+#include <filesystem>
 #include <fstream>
 #include <iterator>
+#include <stdexcept>
 #include <vector>
-#include <filesystem>
 
 namespace fs = std::filesystem;
 
-std::vector<int> readFile(fs::path &input)
-{
+std::vector<int> readFile(fs::path &input) {
   std::vector<int> v = {};
   if(!fs::exists(input))
     throw std::runtime_error("File does not exist.");
@@ -18,4 +18,8 @@ std::vector<int> readFile(fs::path &input)
         std::back_inserter(v));
   }
   return v;
+}
+
+bool checkSudokuSize(std::vector<int>& vec) {
+  return (vec.size() == 81);
 }
