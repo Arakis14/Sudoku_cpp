@@ -51,5 +51,13 @@ TEST(CFileReaderTest, IsSizeIncorrect) {
 TEST(SudokuTest, checkRow) {
   int a = 21;
   auto res = checkRow(a);
-  EXPECT_EQ(res, 2);
+  int expected = 2;
+  EXPECT_EQ(res, expected);
+}
+
+TEST(SudokuTest, checkColumn) {
+  int a = 60;
+  auto res = checkColumn(a);
+  int expected = 6;
+  EXPECT_EQ(res, expected);
 }
