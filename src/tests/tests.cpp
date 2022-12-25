@@ -48,16 +48,22 @@ TEST(CFileReaderTest, IsSizeIncorrect) {
   EXPECT_FALSE(res);
 }
 
-TEST(SudokuTest, checkRow) {
+TEST(SudokuTest, checkRowNumber) {
   int a = 21;
-  auto res = checkRow(a);
-  int expected = 2;
+  auto res = checkRowNumber(a);
+  int expected = 3;
   EXPECT_EQ(res, expected);
 }
 
-TEST(SudokuTest, checkColumn) {
+TEST(SudokuTest, checkColumnNumber) {
   int a = 60;
-  auto res = checkColumn(a);
+  auto res = checkColumnNumber(a);
   int expected = 6;
   EXPECT_EQ(res, expected);
+}
+
+TEST(SudokuTest, checkRowValues) {
+  auto res = checkRowNumber(10);
+  auto result = checkRowValues(res, sudoku_correct_size);
+  EXPECT_TRUE(result);
 }
