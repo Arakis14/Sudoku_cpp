@@ -58,12 +58,18 @@ TEST(SudokuTest, checkRowNumber) {
 TEST(SudokuTest, checkColumnNumber) {
   int a = 60;
   auto res = checkColumnNumber(a);
-  int expected = 6;
+  int expected = 7;
   EXPECT_EQ(res, expected);
 }
 
 TEST(SudokuTest, checkRowValues) {
   auto res = checkRowNumber(10);
   auto result = checkRowValues(res, sudoku_correct_size);
+  EXPECT_TRUE(result);
+}
+
+TEST(SudokuTest, checkColumnValues) {
+  auto res = checkColumnNumber(50);
+  auto result = checkColumnValues(res, sudoku_correct_size);
   EXPECT_TRUE(result);
 }
