@@ -26,6 +26,7 @@ std::vector<int> sudoku_incorrect_size = {
 0, 0, 0, 0, 0, 0, 0, 0
 };
 
+//test is dependant on the path of a example file
 TEST(CFileReaderTest, CanReadFromFile) {
   std::filesystem::path path = "/home/wiktor/Documents/workspace/Sudoku_cpp/src/tests/example.txt";
   auto res = readFile(path);
@@ -72,4 +73,31 @@ TEST(SudokuTest, checkColumnValues) {
   auto res = checkColumnNumber(50);
   auto result = checkColumnValues(res, sudoku_correct_size);
   EXPECT_TRUE(result);
+}
+
+TEST(SudokuTest, checkSquareNumber1) {
+  int index = 80;
+  int row_num = checkRowNumber(index);
+  int col_num = checkColumnNumber(index);
+  auto res = checkSquareNumber(row_num, col_num);
+  int expected = 9;
+  EXPECT_EQ(res, expected);
+}
+
+TEST(SudokuTest, checkSquareNumber2) {
+  int index = 40;
+  int row_num = checkRowNumber(index);
+  int col_num = checkColumnNumber(index);
+  auto res = checkSquareNumber(row_num, col_num);
+  int expected = 5;
+  EXPECT_EQ(res, expected);
+}
+
+TEST(SudokuTest, checkSquareNumber3) {
+  int index = 27;
+  int row_num = checkRowNumber(index);
+  int col_num = checkColumnNumber(index);
+  auto res = checkSquareNumber(row_num, col_num);
+  int expected = 4;
+  EXPECT_EQ(res, expected);
 }
